@@ -1,13 +1,13 @@
 from __future__ import division, print_function
 import numpy as np
-import progressbar
+#import progressbar
 
 # Import helper functions
 from mlfromscratch.utils import train_test_split, standardize, to_categorical
 from mlfromscratch.utils import mean_squared_error, accuracy_score
 from mlfromscratch.deep_learning.loss_functions import SquareLoss, CrossEntropy
 from mlfromscratch.supervised_learning.decision_tree import RegressionTree
-from mlfromscratch.utils.misc import bar_widgets
+#from mlfromscratch.utils.misc import bar_widgets
 
 
 class GradientBoosting(object):
@@ -39,7 +39,7 @@ class GradientBoosting(object):
         self.min_impurity = min_impurity
         self.max_depth = max_depth
         self.regression = regression
-        self.bar = progressbar.ProgressBar(widgets=bar_widgets)
+        #self.bar = progressbar.ProgressBar(widgets=bar_widgets)
         
         # Square loss for regression
         # Log loss for classification
@@ -59,7 +59,7 @@ class GradientBoosting(object):
 
     def fit(self, X, y):
         y_pred = np.full(np.shape(y), np.mean(y, axis=0))
-        for i in self.bar(range(self.n_estimators)):
+        for i in range(self.n_estimators):
             gradient = self.loss.gradient(y, y_pred)
             self.trees[i].fit(X, gradient)
             update = self.trees[i].predict(X)

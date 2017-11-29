@@ -1,14 +1,14 @@
 from __future__ import division, print_function
 import numpy as np
 import math
-import progressbar
+#import progressbar
 
 # Import helper functions
 from mlfromscratch.utils import divide_on_feature, train_test_split, get_random_subsets, normalize
 from mlfromscratch.utils import accuracy_score, calculate_entropy
 from mlfromscratch.unsupervised_learning import PCA
 from mlfromscratch.supervised_learning import ClassificationTree
-from mlfromscratch.utils.misc import bar_widgets
+#from mlfromscratch.utils.misc import bar_widgets
 from mlfromscratch.utils import Plot
 
 
@@ -37,7 +37,7 @@ class RandomForest():
         self.min_samples_split = min_samples_split
         self.min_gain = min_gain            # Minimum information gain req. to continue
         self.max_depth = max_depth          # Maximum depth for tree
-        self.progressbar = progressbar.ProgressBar(widgets=bar_widgets)
+        #self.progressbar = progressbar.ProgressBar(widgets=bar_widgets)
 
         # Initialize decision trees
         self.trees = []
@@ -58,7 +58,7 @@ class RandomForest():
         # Choose one random subset of the data for each tree
         subsets = get_random_subsets(X, y, self.n_estimators)
 
-        for i in self.progressbar(range(self.n_estimators)):
+        for i in range(self.n_estimators):
             X_subset, y_subset = subsets[i]
             # Feature bagging (select random subsets of the features)
             idx = np.random.choice(range(n_features), size=self.max_features, replace=True)

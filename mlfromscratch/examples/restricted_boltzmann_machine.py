@@ -1,8 +1,9 @@
 import logging
 
 import numpy as np
-from sklearn import datasets
-from sklearn.datasets import fetch_mldata
+#from sklearn import datasets
+#from sklearn.datasets import fetch_mldata
+from mlxtend.data import mnist_data
 import matplotlib.pyplot as plt
 
 from mlfromscratch.unsupervised_learning import RBM
@@ -11,10 +12,12 @@ logging.basicConfig(level=logging.DEBUG)
 
 def main():
 
-    mnist = fetch_mldata('MNIST original')
-
-    X = mnist.data / 255.0
-    y = mnist.target
+#    mnist = fetch_mldata('MNIST original')
+#
+#    X = mnist.data / 255.0
+#    y = mnist.target
+    X, y = mnist_data()
+    X = X / 255.0
 
     # Select the samples of the digit 2
     X = X[y == 2]

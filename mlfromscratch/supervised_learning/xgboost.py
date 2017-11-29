@@ -1,12 +1,12 @@
 from __future__ import division, print_function
 import numpy as np
-import progressbar
+#import progressbar
 
 from mlfromscratch.utils import train_test_split, standardize, to_categorical, normalize
 from mlfromscratch.utils import mean_squared_error, accuracy_score
 from mlfromscratch.supervised_learning import XGBoostRegressionTree
 from mlfromscratch.deep_learning.activation_functions import Sigmoid
-from mlfromscratch.utils.misc import bar_widgets
+#from mlfromscratch.utils.misc import bar_widgets
 from mlfromscratch.utils import Plot
 
 
@@ -59,7 +59,7 @@ class XGBoost(object):
         self.min_impurity = min_impurity              # Minimum variance reduction to continue
         self.max_depth = max_depth                  # Maximum depth for tree
 
-        self.bar = progressbar.ProgressBar(widgets=bar_widgets)
+        #self.bar = progressbar.ProgressBar(widgets=bar_widgets)
         
         # Log loss for classification
         self.loss = LogisticLoss()
@@ -79,7 +79,7 @@ class XGBoost(object):
         y = to_categorical(y)
 
         y_pred = np.zeros(np.shape(y))
-        for i in self.bar(range(self.n_estimators)):
+        for i in range(self.n_estimators):
             tree = self.trees[i]
             y_and_pred = np.concatenate((y, y_pred), axis=1)
             tree.fit(X, y_and_pred)

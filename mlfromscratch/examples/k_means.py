@@ -1,14 +1,15 @@
 from __future__ import division, print_function
-from sklearn import datasets
+#from sklearn import datasets
+from mlxtend.data import three_blobs_data
 import numpy as np
 
 from mlfromscratch.unsupervised_learning import KMeans
 from mlfromscratch.utils import Plot
 
 
-def main():
+if __name__ == "__main__":
     # Load the dataset
-    X, y = datasets.make_blobs()
+    X, y = three_blobs_data()
 
     # Cluster the data using K-Means
     clf = KMeans(k=3)
@@ -21,5 +22,4 @@ def main():
 
 
 
-if __name__ == "__main__":
-    main()
+

@@ -1,8 +1,9 @@
 from __future__ import print_function, division
 import matplotlib.pyplot as plt
 import numpy as np
-import progressbar
-from sklearn.datasets import fetch_mldata
+#import progressbar
+#from sklearn.datasets import fetch_mldata
+from mlxtend.data import mnist_data
 
 from mlfromscratch.deep_learning.optimizers import Adam
 from mlfromscratch.deep_learning.loss_functions import CrossEntropy
@@ -78,10 +79,12 @@ class DCGAN():
 
     def train(self, epochs, batch_size=128, save_interval=50):
 
-        mnist = fetch_mldata('MNIST original')
+        #mnist = fetch_mldata('MNIST original')
 
-        X = mnist.data.reshape((-1,) + self.img_shape)
-        y = mnist.target
+        #X = mnist.data.reshape((-1,) + self.img_shape)
+        #y = mnist.target
+        X, y = mnist_data()
+        X = X.reshape((-1,) + self.img_shape)
 
         # Rescale -1 to 1
         X = (X.astype(np.float32) - 127.5) / 127.5

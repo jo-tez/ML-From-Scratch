@@ -1,7 +1,7 @@
 from __future__ import print_function
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
+#import pandas as pd
 # Import helper functions
 from mlfromscratch.supervised_learning import ElasticNet
 from mlfromscratch.utils import k_fold_cross_validation_sets, normalize, mean_squared_error

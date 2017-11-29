@@ -1,4 +1,4 @@
-import progressbar
+#import progressbar
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import matplotlib.cm as cmx
@@ -9,14 +9,15 @@ from mlfromscratch.utils.data_operation import calculate_covariance_matrix
 from mlfromscratch.utils.data_operation import calculate_correlation_matrix
 from mlfromscratch.utils.data_manipulation import standardize
 
-bar_widgets = [
-    'Training: ', progressbar.Percentage(), ' ', progressbar.Bar(marker="-", left="[", right="]"),
-    ' ', progressbar.ETA()
-]
+#bar_widgets = [
+#    'Training: ', progressbar.Percentage(), ' ', progressbar.Bar(marker="-", left="[", right="]"),
+#    ' ', progressbar.ETA()
+#]
+
 
 class Plot():
     def __init__(self): 
-        self.cmap = plt.get_cmap('viridis')
+        self.cmap = plt.get_cmap()
 
     def _transform(self, X, dim):
         covariance = calculate_covariance_matrix(X)

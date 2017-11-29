@@ -3,7 +3,7 @@ import numpy as np
 
 from mlfromscratch.unsupervised_learning import Apriori
 
-def main():
+if __name__ == "__main__":
     # Demo transaction set
     # Example 2: https://en.wikipedia.org/wiki/Apriori_algorithm
     transactions = np.array([[1, 2, 3, 4], [1, 2, 4], [1, 2], [2, 3, 4], [2, 3], [3, 4], [2, 4]])
@@ -31,5 +31,5 @@ def main():
         print ("\t%s -> %s (support: %.2f, confidence: %s)" % (rule.antecedent, rule.concequent, rule.support, rule.confidence,))
 
 
-if __name__ == "__main__":
-    main()
+
+

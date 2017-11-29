@@ -1,11 +1,12 @@
 from __future__ import print_function, division
-from sklearn import datasets
+#from sklearn import datasets
 import math
 import matplotlib.pyplot as plt
 import numpy as np
-import progressbar
+#import progressbar
 
-from sklearn.datasets import fetch_mldata
+#from sklearn.datasets import fetch_mldata
+from mlxtend.data import mnist_data
 
 from mlfromscratch.deep_learning.optimizers import Adam
 from mlfromscratch.deep_learning.loss_functions import CrossEntropy
@@ -78,10 +79,11 @@ class GAN():
 
     def train(self, n_epochs, batch_size=128, save_interval=50):
 
-        mnist = fetch_mldata('MNIST original')
+        #mnist = fetch_mldata('MNIST original')
 
-        X = mnist.data
-        y = mnist.target
+        #X = mnist.data
+        #y = mnist.target
+        X, y = mnist_data()
 
         # Rescale [-1, 1]
         X = (X.astype(np.float32) - 127.5) / 127.5
