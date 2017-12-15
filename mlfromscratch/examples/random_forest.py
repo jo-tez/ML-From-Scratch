@@ -5,7 +5,7 @@ from mlxtend.data import mnist_data
 from mlfromscratch.utils import train_test_split, accuracy_score, Plot
 from mlfromscratch.supervised_learning import RandomForest
 
-def main():
+if __name__ == "__main__":
 #    data = datasets.load_digits()
 #    X = data.data
 #    y = data.target
@@ -24,5 +24,5 @@ def main():
     Plot().plot_in_2d(X_test, y_pred, title="Random Forest", accuracy=accuracy, legend_labels=np.unique(y))
 
 
-if __name__ == "__main__":
-    main()
+
+

@@ -1,5 +1,5 @@
 from __future__ import print_function
-from sklearn import datasets
+#from sklearn import datasets
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -8,12 +8,14 @@ from mlfromscratch.utils import make_diagonal, normalize, train_test_split, accu
 from mlfromscratch.deep_learning.activation_functions import Sigmoid
 from mlfromscratch.utils import Plot
 from mlfromscratch.supervised_learning import LogisticRegression
+from mlxtend.data import iris_data
 
-def main():
+if __name__ == "__main__":
     # Load dataset
-    data = datasets.load_iris()
-    X = normalize(data.data[data.target != 0])
-    y = data.target[data.target != 0]
+    #data = datasets.load_iris()
+    X, y = iris_data()
+    X = normalize(X[y != 0])
+    y = y[y != 0]
     y[y == 1] = 0
     y[y == 2] = 1
 
@@ -29,5 +31,4 @@ def main():
     # Reduce dimension to two using PCA and plot the results
     Plot().plot_in_2d(X_test, y_pred, title="Logistic Regression", accuracy=accuracy)
 
-if __name__ == "__main__":
-    main()
+

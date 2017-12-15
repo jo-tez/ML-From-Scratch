@@ -1,13 +1,13 @@
 from __future__ import division, print_function
 import numpy as np
-import pandas as pd
+#import pandas as pd
 import matplotlib.pyplot as plt
-import progressbar
+#import progressbar
 
 from mlfromscratch.utils import train_test_split, standardize, to_categorical
 from mlfromscratch.utils import mean_squared_error, accuracy_score, Plot
-from mlfromscratch.utils.loss_functions import SquareLoss
-from mlfromscratch.utils.misc import bar_widgets
+from mlfromscratch.deep_learning.loss_functions import SquareLoss
+#from mlfromscratch.utils.misc import bar_widgets
 from mlfromscratch.supervised_learning import GradientBoostingRegressor
 
 
@@ -15,10 +15,11 @@ def main():
     print ("-- Gradient Boosting Regression --")
 
     # Load temperature data
-    data = pd.read_csv('mlfromscratch/data/TempLinkoping2016.txt', sep="\t")
+    DF = '../data/TempLinkoping2016.txt'
+    data = np.genfromtxt(DF, delimiter='\t', names=True)
 
-    time = np.atleast_2d(data["time"].as_matrix()).T
-    temp = np.atleast_2d(data["temp"].as_matrix()).T
+    time = np.atleast_2d(data['time']).T
+    temp = np.atleast_2d(data['temp']).T
 
     X = time.reshape((-1, 1))               # Time. Fraction of the year [0, 1]
     X = np.insert(X, 0, values=1, axis=1)   # Insert bias term
@@ -33,7 +34,7 @@ def main():
     y_pred_line = model.predict(X)
 
     # Color map
-    cmap = plt.get_cmap('viridis')
+    cmap = plt.get_cmap()
 
     mse = mean_squared_error(y_test, y_pred)
 

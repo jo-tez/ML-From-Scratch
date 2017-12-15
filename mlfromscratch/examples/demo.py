@@ -1,4 +1,4 @@
-from __future__ import print_function
+lfrom __future__ import print_function
 #from sklearn import datasets
 from mlxtend.data import mnist_data
 import numpy as np

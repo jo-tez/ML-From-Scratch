@@ -1,5 +1,5 @@
 import numpy as np
-import pandas as pd
+#import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import helper functions
@@ -10,10 +10,11 @@ from mlfromscratch.supervised_learning import BayesianRegression
 def main():
 
     # Load temperature data
-    data = pd.read_csv('mlfromscratch/data/TempLinkoping2016.txt', sep="\t")
+    DF = '../data/TempLinkoping2016.txt'
+    data = np.genfromtxt(DF, delimiter='\t', names=True)
 
-    time = np.atleast_2d(data["time"].as_matrix()).T
-    temp = np.atleast_2d(data["temp"].as_matrix()).T
+    time = np.atleast_2d(data['time']).T
+    temp = np.atleast_2d(data['temp']).T
 
     X = time # fraction of the year [0, 1]
     y = temp

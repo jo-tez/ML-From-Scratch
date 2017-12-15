@@ -11,10 +11,11 @@ from mlfromscratch.utils import train_test_split, polynomial_features, Plot
 def main():
 
     # Load temperature data
-    data = pd.read_csv('mlfromscratch/data/TempLinkoping2016.txt', sep="\t")
+    DF = '../data/TempLinkoping2016.txt'
+    data = np.genfromtxt(DF, delimiter='\t', names=True)
 
-    time = np.atleast_2d(data["time"].as_matrix()).T
-    temp = data["temp"].as_matrix()
+    time = np.atleast_2d(data['time']).T
+    temp = np.atleast_2d(data['temp'])
 
     X = time # fraction of the year [0, 1]
     y = temp

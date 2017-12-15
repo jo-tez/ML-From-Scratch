@@ -1,21 +1,24 @@
 from __future__ import division, print_function
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
+#import pandas as pd
 
 from mlfromscratch.utils import train_test_split, standardize, accuracy_score
 from mlfromscratch.utils import mean_squared_error, calculate_variance, Plot
 from mlfromscratch.supervised_learning import RegressionTree
 
-def main():
+
+if __name__ == "__main__":
 
     print ("-- Regression Tree --")
 
     # Load temperature data
-    data = pd.read_csv('mlfromscratch/data/TempLinkoping2016.txt', sep="\t")
+    # data = pd.read_csv('mlfromscratch/data/TempLinkoping2016.txt', sep="\t")
+    DF = '../data/TempLinkoping2016.txt'
+    data = np.genfromtxt(DF, delimiter='\t', names=True)
 
-    time = np.atleast_2d(data["time"].as_matrix()).T
-    temp = np.atleast_2d(data["temp"].as_matrix()).T
+    time = np.atleast_2d(data['time']).T
+    temp = np.atleast_2d(data['temp']).T
 
     X = standardize(time)        # Time. Fraction of the year [0, 1]
     y = temp[:, 0]  # Temperature. Reduce to one-dim
@@ -29,7 +32,7 @@ def main():
     y_pred_line = model.predict(X)
 
     # Color map
-    cmap = plt.get_cmap('viridis')
+    cmap = plt.get_cmap()
 
     mse = mean_squared_error(y_test, y_pred)
 
@@ -48,5 +51,4 @@ def main():
     plt.show()
 
 
-if __name__ == "__main__":
-    main()
+
