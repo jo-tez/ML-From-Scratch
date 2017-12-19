@@ -2,7 +2,7 @@
 import numpy as np
 from mlfromscratch.unsupervised_learning import FPGrowth
 
-def main():
+if __name__ == "__main__":
     # Demo transaction set
     # Example:
     # https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Frequent_Pattern_Mining/The_FP-Growth_Algorithm
@@ -40,5 +40,4 @@ def main():
         print ("\t%s" % itemset)
     print ("")
 
-if __name__ == "__main__":
-    main()
+

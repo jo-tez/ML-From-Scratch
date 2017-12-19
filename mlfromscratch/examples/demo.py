@@ -1,4 +1,4 @@
-lfrom __future__ import print_function
+from __future__ import print_function
 #from sklearn import datasets
 from mlxtend.data import mnist_data
 import numpy as np
@@ -16,11 +16,11 @@ from mlfromscratch.unsupervised_learning import PCA
 from mlfromscratch.deep_learning.layers import Dense, Dropout, Conv2D, Flatten, Activation
 
 
-print ("+-------------------------------------------+")
+print ("+----------------------------------------+")
 print ("|                                           |")
 print ("|       Machine Learning From Scratch       |")
 print ("|                                           |")
-print ("+-------------------------------------------+")
+print ("+----------------------------------------+")
 
 
 # ...........
@@ -77,7 +77,7 @@ random_forest = RandomForest(n_estimators=50)
 #support_vector_machine = SupportVectorMachine()
 lda = LDA()
 gbc = GradientBoostingClassifier(n_estimators=50, learning_rate=.9, max_depth=2)
-#xgboost = XGBoost(n_estimators=50, learning_rate=0.5)
+xgboost = XGBoost(n_estimators=50, learning_rate=0.5)
 
 # ........
 #  TRAIN
@@ -85,10 +85,10 @@ gbc = GradientBoostingClassifier(n_estimators=50, learning_rate=.9, max_depth=2)
 print ("Training:")
 print ("- Adaboost")
 adaboost.fit(X_train, rescaled_y_train)
-print ("- Decision Tree")
-decision_tree.fit(X_train, y_train)
-print ("- Gradient Boosting")
-gbc.fit(X_train, y_train)
+#print ("- Decision Tree")
+#decision_tree.fit(X_train, y_train)
+#print ("- Gradient Boosting")
+#gbc.fit(X_train, y_train)
 print ("- LDA")
 lda.fit(X_train, y_train)
 print ("- Logistic Regression")
@@ -100,7 +100,7 @@ naive_bayes.fit(X_train, y_train)
 print ("- Perceptron")
 perceptron.fit(X_train, to_categorical(y_train))
 print ("- Random Forest")
-random_forest.fit(X_train, y_train)
+#random_forest.fit(X_train, y_train)
 #print ("- Support Vector Machine")
 #support_vector_machine.fit(X_train, rescaled_y_train)
 #print ("- XGBoost")
@@ -113,15 +113,15 @@ random_forest.fit(X_train, y_train)
 # .........
 y_pred = {}
 y_pred["Adaboost"] = adaboost.predict(X_test)
-y_pred["Gradient Boosting"] = gbc.predict(X_test)
+#y_pred["Gradient Boosting"] = gbc.predict(X_test)
 y_pred["Naive Bayes"] = naive_bayes.predict(X_test)
 y_pred["K Nearest Neighbors"] = knn.predict(X_test, X_train, y_train)
 y_pred["Logistic Regression"] = logistic_regression.predict(X_test)
 y_pred["LDA"] = lda.predict(X_test)
 y_pred["Multilayer Perceptron"] = np.argmax(mlp.predict(X_test), axis=1)
 y_pred["Perceptron"] = np.argmax(perceptron.predict(X_test), axis=1)
-y_pred["Decision Tree"] = decision_tree.predict(X_test)
-y_pred["Random Forest"] = random_forest.predict(X_test)
+#y_pred["Decision Tree"] = decision_tree.predict(X_test)
+#y_pred["Random Forest"] = random_forest.predict(X_test)
 #y_pred["Support Vector Machine"] = support_vector_machine.predict(X_test)
 #y_pred["XGBoost"] = xgboost.predict(X_test)
 

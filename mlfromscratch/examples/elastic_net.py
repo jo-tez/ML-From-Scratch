@@ -6,21 +6,24 @@ import numpy as np
 from mlfromscratch.supervised_learning import ElasticNet
 from mlfromscratch.utils import k_fold_cross_validation_sets, normalize, mean_squared_error
 from mlfromscratch.utils import train_test_split, polynomial_features, Plot
+from mlxtend.preprocessing.shuffle import shuffled_split
 
 
-def main():
+if __name__ == "__main__":
 
     # Load temperature data
     DF = '../data/TempLinkoping2016.txt'
     data = np.genfromtxt(DF, delimiter='\t', names=True)
 
     time = np.atleast_2d(data['time']).T
-    temp = np.atleast_2d(data['temp'])
+    temp = data['temp']
+    #temp = np.atleast_2d(data['temp'])
 
     X = time # fraction of the year [0, 1]
     y = temp
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4)
+    #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4)
+    X_train, y_train, X_test, y_test = shuffled_split(X, y)
 
     poly_degree = 13
 
@@ -47,7 +50,7 @@ def main():
     y_pred_line = model.predict(X)
 
     # Color map
-    cmap = plt.get_cmap('viridis')
+    cmap = plt.get_cmap()
 
     # Plot the results
     m1 = plt.scatter(366 * X_train, y_train, color=cmap(0.9), s=10)
@@ -60,5 +63,4 @@ def main():
     plt.legend((m1, m2), ("Training data", "Test data"), loc='lower right')
     plt.show()
 
-if __name__ == "__main__":
-    main()
+
