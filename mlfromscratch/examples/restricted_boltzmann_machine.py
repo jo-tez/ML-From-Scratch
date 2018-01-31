@@ -10,7 +10,7 @@ from mlfromscratch.unsupervised_learning import RBM
 
 logging.basicConfig(level=logging.DEBUG)
 
-def main():
+if __name__ == "__main__":
 
 #    mnist = fetch_mldata('MNIST original')
 #
@@ -65,5 +65,4 @@ def main():
     plt.close()
 
 
-if __name__ == "__main__":
-    main()
+

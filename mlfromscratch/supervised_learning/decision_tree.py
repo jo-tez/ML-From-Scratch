@@ -164,7 +164,7 @@ class DecisionTree(object):
         y_pred = []
         for x in X:
             y_pred.append(self.predict_value(x))
-        return y_pred
+        return np.array(y_pred)
 
     def print_tree(self, tree=None, indent=" "):
         """ Recursively print the decision tree """
@@ -172,18 +172,19 @@ class DecisionTree(object):
             tree = self.root
 
         # If we're at leaf => print the label
-        if tree.value is not None:
-            print (tree.value)
-        # Go deeper down the tree
-        else:
-            # Print test
-            print ("%s:%s? " % (tree.feature_i, tree.threshold))
-            # Print the true scenario
-            print ("%sT->" % (indent), end="")
-            self.print_tree(tree.true_branch, indent + indent)
-            # Print the false scenario
-            print ("%sF->" % (indent), end="")
-            self.print_tree(tree.false_branch, indent + indent)
+        if tree:
+            if tree.value is not None:
+                print (tree.value)
+            # Go deeper down the tree
+            else:
+                # Print test
+                print ("%s:%s? " % (tree.feature_i, tree.threshold))
+                # Print the true scenario
+                print ("%sT->" % (indent), end="")
+                self.print_tree(tree.true_branch, indent + indent)
+                # Print the false scenario
+                print ("%sF->" % (indent), end="")
+                self.print_tree(tree.false_branch, indent + indent)
 
 
 

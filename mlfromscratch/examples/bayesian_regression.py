@@ -7,7 +7,7 @@ from mlfromscratch.utils.data_operation import mean_squared_error
 from mlfromscratch.utils.data_manipulation import train_test_split, polynomial_features
 from mlfromscratch.supervised_learning import BayesianRegression
 
-def main():
+if __name__ == "__main__":
 
     # Load temperature data
     DF = '../data/TempLinkoping2016.txt'
@@ -57,7 +57,7 @@ def main():
     print ("Mean Squared Error:", mse)
 
     # Color map
-    cmap = plt.get_cmap('viridis')
+    cmap = plt.get_cmap()
 
     # Plot the results
     m1 = plt.scatter(366 * X_train, y_train, color=cmap(0.9), s=10)
@@ -76,5 +76,4 @@ def main():
 
     plt.show()
 
-if __name__ == "__main__":
-    main()
+

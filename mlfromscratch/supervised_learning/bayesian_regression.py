@@ -1,6 +1,7 @@
 from __future__ import print_function, division
 import numpy as np
-from scipy.stats import chi2, multivariate_normal
+#from scipy.stats import chi2, multivariate_normal
+from numpy.random import multivariate_normal, chisquare
 from mlfromscratch.utils import mean_squared_error, train_test_split, polynomial_features
 
 
@@ -51,7 +52,7 @@ class BayesianRegression(object):
     # Reference:
     #   https://en.wikipedia.org/wiki/Scaled_inverse_chi-squared_distribution
     def _draw_scaled_inv_chi_sq(self, n, df, scale):
-        X = chi2.rvs(size=n, df=df)
+        X = chisquare(size=n, df=df)
         sigma_sq = df * scale / X
         return sigma_sq
 
@@ -84,7 +85,7 @@ class BayesianRegression(object):
         beta_draws = np.empty((self.n_draws, n_features))
         for i in range(self.n_draws):
             sigma_sq = self._draw_scaled_inv_chi_sq(n=1, df=nu_n, scale=sigma_sq_n)
-            beta = multivariate_normal.rvs(size=1, mean=mu_n[:,0], cov=sigma_sq*np.linalg.pinv(omega_n))
+            beta = multivariate_normal(size=1, mean=mu_n[:,0], cov=sigma_sq*np.linalg.pinv(omega_n))
             # Save parameter draws
             beta_draws[i, :] = beta
 

@@ -1,5 +1,5 @@
 from .adaboost import Adaboost
-#from .bayesian_regression import BayesianRegression
+from .bayesian_regression import BayesianRegression
 from .decision_tree import RegressionTree, ClassificationTree, XGBoostRegressionTree
 from .gradient_boosting import GradientBoostingClassifier, GradientBoostingRegressor
 from .k_nearest_neighbors import KNN

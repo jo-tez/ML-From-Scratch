@@ -99,7 +99,7 @@ print ("- Naive Bayes")
 naive_bayes.fit(X_train, y_train)
 print ("- Perceptron")
 perceptron.fit(X_train, to_categorical(y_train))
-print ("- Random Forest")
+#print ("- Random Forest")
 #random_forest.fit(X_train, y_train)
 #print ("- Support Vector Machine")
 #support_vector_machine.fit(X_train, rescaled_y_train)
@@ -135,7 +135,7 @@ for clf in y_pred:
         print ("\t%-23s: %.5f" %(clf, accuracy_score(rescaled_y_test, y_pred[clf])))
     # Categorical
     else:
-        print ("\t%-23s: %.5f" %(clf, accuracy_score(y_test, y_pred[clf])))
+        print ("\t%-23s: %.5f" %(clf, (accuracy_score(y_test, y_pred[clf])))
 
 # .......
 #  PLOT
