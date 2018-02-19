@@ -3,7 +3,7 @@
 ## About
 Python implementations of some of the fundamental Machine Learning models and algorithms from scratch.
 
-The purpose of this project is not to produce as optimized and computationally efficient algorithms as possible 
+The purpose of this project is not to produce as optimized and computationally efficient algorithms as possible
 but rather to present the inner workings of them in a transparent and accessible way.
 
 ## Table of Contents
@@ -27,22 +27,22 @@ but rather to present the inner workings of them in a transparent and accessible
     + [Reinforcement Learning](#reinforcement-learning)
     + [Deep Learning](#deep-learning)
   * [Contact](#contact)
-    
+
 ## Installation
     $ git clone https://github.com/eriklindernoren/ML-From-Scratch
     $ cd ML-From-Scratch
     $ python setup.py install
-    
+
 ## Example Usage
 ### Polynomial Regression
     $ python mlfromscratch/examples/polynomial_regression.py
 
 <p align="center">
-    <img src="http://eriklindernoren.se/images/mlfs_prr.png" width="640"\>
+    <img src="http://eriklindernoren.se/images/p_reg.gif" width="640"\>
 </p>
 <p align="center">
-    Figure: Regularized polynomial regression of temperature data measured in <br> 
-    Linköping, Sweden 2016.
+    Figure: Training progress of a regularized polynomial regression model fitting <br>
+    temperature data measured in Linköping, Sweden 2016.
 </p>
 
 ### Classification With CNN
@@ -85,7 +85,7 @@ but rather to present the inner workings of them in a transparent and accessible
 
 ### Density-Based Clustering
     $ python mlfromscratch/examples/dbscan.py
-   
+
 <p align="center">
     <img src="http://eriklindernoren.se/images/mlfs_dbscan.png" width="640">
 </p>
@@ -135,12 +135,13 @@ but rather to present the inner workings of them in a transparent and accessible
     +------------------------+------------+--------------+
     Total Parameters: 533762
 
-   
+
 <p align="center">
     <img src="http://eriklindernoren.se/images/gan_mnist5.gif" width="640">
 </p>
 <p align="center">
-    Figure: Training progress of a MNIST Generative Adversarial Network.
+    Figure: Training progress of a Generative Adversarial Network generating <br>
+    handwritten digits.
 </p>
 
 ### Deep Reinforcement Learning
@@ -243,7 +244,7 @@ but rather to present the inner workings of them in a transparent and accessible
     [294 Answer: 'Genetic Algorithm']
 
 ### Association Analysis
-    $ python mlfromscratch/examples/apriori.py 
+    $ python mlfromscratch/examples/apriori.py
     +-------------+
     |   Apriori   |
     +-------------+
@@ -291,6 +292,7 @@ but rather to present the inner workings of them in a transparent and accessible
 
 ### Unsupervised Learning
 - [Apriori](mlfromscratch/unsupervised_learning/apriori.py)
+- [Autoencoder](mlfromscratch/unsupervised_learning/autoencoder.py)
 - [DBSCAN](mlfromscratch/unsupervised_learning/dbscan.py)
 - [FP-Growth](mlfromscratch/unsupervised_learning/fp_growth.py)
 - [Gaussian Mixture Model](mlfromscratch/unsupervised_learning/gaussian_mixture_model.py)
@@ -326,7 +328,5 @@ but rather to present the inner workings of them in a transparent and accessible
     * [Recurrent Neural Network](mlfromscratch/examples/recurrent_neural_network.py)
 
 ## Contact
-If there's some implementation you would like to see here or if you're just feeling social, 
+If there's some implementation you would like to see here or if you're just feeling social,
 feel free to [email](mailto:eriklindernoren@gmail.com) me or connect with me on [LinkedIn](https://www.linkedin.com/in/eriklindernoren/).
-
-
