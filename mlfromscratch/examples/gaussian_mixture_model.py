@@ -3,16 +3,17 @@ import sys
 import os
 import math
 import random
-from sklearn import datasets
+#from sklearn import datasets
 import numpy as np
 
 from mlfromscratch.unsupervised_learning import GaussianMixtureModel
 from mlfromscratch.utils import Plot
+from mlxtend.data import three_blobs_data
 
-
-def main():
+if __name__ == "__main__":
     # Load the dataset
-    X, y = datasets.make_blobs()
+    #X, y = datasets.make_blobs()
+    X, y = three_blobs_data()
 
     # Cluster the data
     clf = GaussianMixtureModel(k=3)
@@ -23,5 +24,3 @@ def main():
     p.plot_in_2d(X, y, title="Actual Clustering")
 
 
-if __name__ == "__main__":
-    main()

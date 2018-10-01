@@ -1,5 +1,6 @@
 from __future__ import print_function
-from sklearn import datasets
+#from sklearn import datasets
+from mlxtend.data import mnist_data
 import numpy as np
 import math
 import matplotlib.pyplot as plt
@@ -15,25 +16,26 @@ from mlfromscratch.unsupervised_learning import PCA
 from mlfromscratch.deep_learning.layers import Dense, Dropout, Conv2D, Flatten, Activation
 
 
-print ("+-------------------------------------------+")
+print ("+----------------------------------------+")
 print ("|                                           |")
 print ("|       Machine Learning From Scratch       |")
 print ("|                                           |")
-print ("+-------------------------------------------+")
+print ("+----------------------------------------+")
 
 
 # ...........
 #  LOAD DATA
 # ...........
-data = datasets.load_digits()
+#data = datasets.load_digits()
+X, y = mnist_data()
 digit1 = 1
 digit2 = 8
-idx = np.append(np.where(data.target == digit1)[0], np.where(data.target == digit2)[0])
-y = data.target[idx]
+idx = np.append(np.where(y == digit1)[0], np.where(y == digit2)[0])
+y = y[idx]
 # Change labels to {0, 1}
 y[y == digit1] = 0
 y[y == digit2] = 1
-X = data.data[idx]
+X = X[idx]
 X = normalize(X)
 
 print ("Dataset: The Digit Dataset (digits %s and %s)" % (digit1, digit2))
@@ -72,7 +74,7 @@ mlp.add(Activation('softmax'))
 perceptron = Perceptron()
 decision_tree = ClassificationTree()
 random_forest = RandomForest(n_estimators=50)
-support_vector_machine = SupportVectorMachine()
+#support_vector_machine = SupportVectorMachine()
 lda = LDA()
 gbc = GradientBoostingClassifier(n_estimators=50, learning_rate=.9, max_depth=2)
 xgboost = XGBoost(n_estimators=50, learning_rate=0.5)
@@ -83,10 +85,10 @@ xgboost = XGBoost(n_estimators=50, learning_rate=0.5)
 print ("Training:")
 print ("- Adaboost")
 adaboost.fit(X_train, rescaled_y_train)
-print ("- Decision Tree")
-decision_tree.fit(X_train, y_train)
-print ("- Gradient Boosting")
-gbc.fit(X_train, y_train)
+#print ("- Decision Tree")
+#decision_tree.fit(X_train, y_train)
+#print ("- Gradient Boosting")
+#gbc.fit(X_train, y_train)
 print ("- LDA")
 lda.fit(X_train, y_train)
 print ("- Logistic Regression")
@@ -97,12 +99,12 @@ print ("- Naive Bayes")
 naive_bayes.fit(X_train, y_train)
 print ("- Perceptron")
 perceptron.fit(X_train, to_categorical(y_train))
-print ("- Random Forest")
-random_forest.fit(X_train, y_train)
-print ("- Support Vector Machine")
-support_vector_machine.fit(X_train, rescaled_y_train)
-print ("- XGBoost")
-xgboost.fit(X_train, y_train)
+#print ("- Random Forest")
+#random_forest.fit(X_train, y_train)
+#print ("- Support Vector Machine")
+#support_vector_machine.fit(X_train, rescaled_y_train)
+#print ("- XGBoost")
+#xgboost.fit(X_train, y_train)
 
 
 
@@ -111,17 +113,17 @@ xgboost.fit(X_train, y_train)
 # .........
 y_pred = {}
 y_pred["Adaboost"] = adaboost.predict(X_test)
-y_pred["Gradient Boosting"] = gbc.predict(X_test)
+#y_pred["Gradient Boosting"] = gbc.predict(X_test)
 y_pred["Naive Bayes"] = naive_bayes.predict(X_test)
 y_pred["K Nearest Neighbors"] = knn.predict(X_test, X_train, y_train)
 y_pred["Logistic Regression"] = logistic_regression.predict(X_test)
 y_pred["LDA"] = lda.predict(X_test)
 y_pred["Multilayer Perceptron"] = np.argmax(mlp.predict(X_test), axis=1)
 y_pred["Perceptron"] = np.argmax(perceptron.predict(X_test), axis=1)
-y_pred["Decision Tree"] = decision_tree.predict(X_test)
-y_pred["Random Forest"] = random_forest.predict(X_test)
-y_pred["Support Vector Machine"] = support_vector_machine.predict(X_test)
-y_pred["XGBoost"] = xgboost.predict(X_test)
+#y_pred["Decision Tree"] = decision_tree.predict(X_test)
+#y_pred["Random Forest"] = random_forest.predict(X_test)
+#y_pred["Support Vector Machine"] = support_vector_machine.predict(X_test)
+#y_pred["XGBoost"] = xgboost.predict(X_test)
 
 # ..........
 #  ACCURACY
@@ -133,7 +135,7 @@ for clf in y_pred:
         print ("\t%-23s: %.5f" %(clf, accuracy_score(rescaled_y_test, y_pred[clf])))
     # Categorical
     else:
-        print ("\t%-23s: %.5f" %(clf, accuracy_score(y_test, y_pred[clf])))
+        print ("\t%-23s: %.5f" %(clf, (accuracy_score(y_test, y_pred[clf])))
 
 # .......
 #  PLOT

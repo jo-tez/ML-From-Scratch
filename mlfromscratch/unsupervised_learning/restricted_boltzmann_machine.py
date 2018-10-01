@@ -1,8 +1,8 @@
 import logging
 import numpy as np
-import progressbar
+#import progressbar
 
-from mlfromscratch.utils.misc import bar_widgets
+#from mlfromscratch.utils.misc import bar_widgets
 from mlfromscratch.utils import batch_iterator
 from mlfromscratch.deep_learning.activation_functions import Sigmoid
 
@@ -31,7 +31,7 @@ class RBM():
         self.batch_size = batch_size
         self.lr = learning_rate
         self.n_hidden = n_hidden
-        self.progressbar = progressbar.ProgressBar(widgets=bar_widgets)
+        #self.progressbar = progressbar.ProgressBar(widgets=bar_widgets)
 
     def _initialize_weights(self, X):
         n_visible = X.shape[1]
@@ -46,7 +46,7 @@ class RBM():
 
         self.training_errors = []
         self.training_reconstructions = []
-        for _ in self.progressbar(range(self.n_iterations)):
+        for _ in range(self.n_iterations):
             batch_errors = []
             for batch in batch_iterator(X, batch_size=self.batch_size):
                 # Positive phase

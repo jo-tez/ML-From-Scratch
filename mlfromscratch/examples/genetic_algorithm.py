@@ -1,7 +1,7 @@
 
 from mlfromscratch.unsupervised_learning import GeneticAlgorithm
 
-def main():
+if __name__ == "__main__":
     target_string = "Genetic Algorithm"
     population_size = 100
     mutation_rate = 0.05
@@ -28,7 +28,5 @@ def main():
     print ("Mutation Rate: %s" % mutation_rate)
     print ("")
 
-    genetic_algorithm.run(iterations=1000)
+    genetic_algorithm.run(iterations=500)
 
-if __name__ == "__main__":
-    main()

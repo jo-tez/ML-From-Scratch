@@ -1,6 +1,7 @@
 from __future__ import division, print_function
 import numpy as np
-from sklearn import datasets
+#from sklearn import datasets
+from mlxtend.data import iris_data
 import matplotlib.pyplot as plt
 
 # Import helper functions
@@ -13,9 +14,10 @@ def main():
 
     print ("-- Gradient Boosting Classification --")
 
-    data = datasets.load_iris()
-    X = data.data
-    y = data.target
+#    data = datasets.load_iris()
+#    X = data.data
+#    y = data.target
+    X, y = iris_data()
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4)
 
@@ -31,7 +33,8 @@ def main():
     Plot().plot_in_2d(X_test, y_pred, 
         title="Gradient Boosting", 
         accuracy=accuracy, 
-        legend_labels=data.target_names)
+        #legend_labels=data.target_names
+        )
 
 
 

@@ -1,9 +1,9 @@
 from __future__ import print_function, division
-from terminaltables import AsciiTable
+#from terminaltables import AsciiTable
 import numpy as np
-import progressbar
+#import progressbar
 from mlfromscratch.utils import batch_iterator
-from mlfromscratch.utils.misc import bar_widgets
+#from mlfromscratch.utils.misc import bar_widgets
 
 
 class NeuralNetwork():
@@ -24,7 +24,7 @@ class NeuralNetwork():
         self.layers = []
         self.errors = {"training": [], "validation": []}
         self.loss_function = loss()
-        self.progressbar = progressbar.ProgressBar(widgets=bar_widgets)
+        #self.progressbar = progressbar.ProgressBar(widgets=bar_widgets)
 
         self.val_set = None
         if validation_data:
@@ -72,7 +72,7 @@ class NeuralNetwork():
 
     def fit(self, X, y, n_epochs, batch_size):
         """ Trains the model for a fixed number of epochs """
-        for _ in self.progressbar(range(n_epochs)):
+        for _ in range(n_epochs):
             
             batch_error = []
             for X_batch, y_batch in batch_iterator(X, y, batch_size=batch_size):
@@ -102,7 +102,7 @@ class NeuralNetwork():
 
     def summary(self, name="Model Summary"):
         # Print model name
-        print (AsciiTable([[name]]).table)
+        #print (AsciiTable([[name]]).table)
         # Network input shape (first layer's input shape)
         print ("Input Shape: %s" % str(self.layers[0].input_shape))
         # Iterate through network and get each layer's configuration
@@ -115,7 +115,7 @@ class NeuralNetwork():
             table_data.append([layer_name, str(params), str(out_shape)])
             tot_params += params
         # Print network configuration table
-        print (AsciiTable(table_data).table)
+        #print (AsciiTable(table_data).table)
         print ("Total Parameters: %d\n" % tot_params)
 
     def predict(self, X):

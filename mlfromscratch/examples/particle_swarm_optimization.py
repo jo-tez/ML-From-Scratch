@@ -1,6 +1,7 @@
 
 from __future__ import print_function
-from sklearn import datasets
+#from sklearn import datasets
+import mlxtend.data
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -11,13 +12,15 @@ from mlfromscratch.deep_learning.layers import Activation, Dense
 from mlfromscratch.deep_learning.loss_functions import CrossEntropy
 from mlfromscratch.deep_learning.optimizers import Adam
 
-def main():
 
-    X, y = datasets.make_classification(n_samples=1000, n_features=10, n_classes=4, n_clusters_per_class=1, n_informative=2)
+if __name__ == '__main__':
 
-    data = datasets.load_iris()
-    X = normalize(data.data)
-    y = data.target
+    #X, y = datasets.make_classification(n_samples=1000, n_features=10, n_classes=4, n_clusters_per_class=1, n_informative=2)
+    #X, y = mlxtend.data.three_blobs_data()
+
+    #data = datasets.load_iris()
+    X, y = mlxtend.data.iris_data()
+    X = normalize(X)
     y = to_categorical(y.astype("int"))
 
     # Model builder
@@ -69,5 +72,4 @@ def main():
     Plot().plot_in_2d(X_test, y_pred, title="Particle Swarm Optimized Neural Network", accuracy=accuracy, legend_labels=range(y.shape[1]))
 
 
-if __name__ == "__main__":
-    main()
+

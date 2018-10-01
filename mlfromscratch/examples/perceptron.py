@@ -1,5 +1,6 @@
 from __future__ import print_function
-from sklearn import datasets
+#from sklearn import datasets
+from mlxtend.data import mnist_data
 import numpy as np
 
 # Import helper functions
@@ -10,10 +11,9 @@ from mlfromscratch.utils import Plot
 from mlfromscratch.supervised_learning import Perceptron
 
 
-def main():
-    data = datasets.load_digits()
-    X = normalize(data.data)
-    y = data.target
+if __name__ == "__main__":
+    X, y = mnist_data()
+    X = normalize(X)
 
     # One-hot encoding of nominal y-values
     y = to_categorical(y)
@@ -21,7 +21,7 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, seed=1)
 
     # Perceptron
-    clf = Perceptron(n_iterations=5000,
+    clf = Perceptron(n_iterations=100,
         learning_rate=0.001, 
         loss=CrossEntropy,
         activation_function=Sigmoid)
@@ -38,5 +38,4 @@ def main():
     Plot().plot_in_2d(X_test, y_pred, title="Perceptron", accuracy=accuracy, legend_labels=np.unique(y))
 
 
-if __name__ == "__main__":
-    main()
+

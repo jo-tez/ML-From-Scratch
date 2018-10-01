@@ -7,7 +7,7 @@ from mlfromscratch.utils import train_test_split, to_categorical, normalize, Plo
 from mlfromscratch.utils import get_random_subsets, shuffle_data, accuracy_score
 from mlfromscratch.deep_learning.optimizers import StochasticGradientDescent, Adam, RMSprop, Adagrad, Adadelta
 from mlfromscratch.deep_learning.loss_functions import CrossEntropy
-from mlfromscratch.utils.misc import bar_widgets
+#from mlfromscratch.utils.misc import bar_widgets
 from mlfromscratch.deep_learning.layers import RNN, Activation
 
 
@@ -21,7 +21,7 @@ def main():
         y = np.zeros([nums, 10, 61], dtype=float)
         for i in range(nums):
             start = np.random.randint(2, 7)
-            mult_ser = np.linspace(start, start*10, num=10, dtype=int)
+            mult_ser = np.linspace(start, start*10, num=10).astype(int)
             X[i] = to_categorical(mult_ser, n_col=61)
             y[i] = np.roll(X[i], -1, axis=0)
         y[:, -1, 1] = 1 # Mark endpoint as 1

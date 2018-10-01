@@ -1,7 +1,7 @@
 from __future__ import print_function
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
+#import pandas as pd
 # Import helper functions
 from mlfromscratch.supervised_learning import PolynomialRidgeRegression
 from mlfromscratch.utils import k_fold_cross_validation_sets, normalize, mean_squared_error
@@ -11,10 +11,11 @@ from mlfromscratch.utils import train_test_split, polynomial_features, Plot
 def main():
 
     # Load temperature data
-    data = pd.read_csv('mlfromscratch/data/TempLinkoping2016.txt', sep="\t")
+    DF = '../data/TempLinkoping2016.txt'
+    data = np.genfromtxt(DF, delimiter='\t', names=True)
 
-    time = np.atleast_2d(data["time"].values).T
-    temp = data["temp"].values
+    time = np.atleast_2d(data['time']).T
+    temp = np.atleast_2d(data['temp'])
 
     X = time # fraction of the year [0, 1]
     y = temp

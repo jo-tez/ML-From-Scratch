@@ -1,6 +1,7 @@
 
 from __future__ import print_function
-from sklearn import datasets
+#from sklearn import datasets
+from mlxtend.data import mnist_data
 import matplotlib.pyplot as plt
 import math
 import numpy as np
@@ -12,13 +13,13 @@ from mlfromscratch.utils import get_random_subsets, shuffle_data, Plot
 from mlfromscratch.utils.data_operation import accuracy_score
 from mlfromscratch.deep_learning.optimizers import StochasticGradientDescent, Adam, RMSprop, Adagrad, Adadelta
 from mlfromscratch.deep_learning.loss_functions import CrossEntropy
-from mlfromscratch.utils.misc import bar_widgets
+#from mlfromscratch.utils.misc import bar_widgets
 from mlfromscratch.deep_learning.layers import Dense, Dropout, Conv2D, Flatten, Activation, MaxPooling2D
 from mlfromscratch.deep_learning.layers import AveragePooling2D, ZeroPadding2D, BatchNormalization, RNN
 
 
 
-def main():
+if __name__ == "__main__":
 
     #----------
     # Conv Net
@@ -26,15 +27,16 @@ def main():
 
     optimizer = Adam()
 
-    data = datasets.load_digits()
-    X = data.data
-    y = data.target
+#    data = datasets.load_digits()
+#    X = data.data
+#    y = data.target
+    X, y = mnist_data()
 
     # Convert to one-hot encoding
     y = to_categorical(y.astype("int"))
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, seed=1)
-
+ 
     # Reshape X to (n_samples, channels, height, width)
     X_train = X_train.reshape((-1,1,8,8))
     X_test = X_test.reshape((-1,1,8,8))
@@ -62,7 +64,8 @@ def main():
     print ()
     clf.summary(name="ConvNet")
 
-    train_err, val_err = clf.fit(X_train, y_train, n_epochs=50, batch_size=256)
+    #train_err, val_err = clf.fit(X_train, y_train, n_epochs=50, batch_size=256) 
+    train_err, val_err = clf.fit(X_train, y_train, n_epochs=2, batch_size=256)
 
     # Training and validation error plot
     n = len(train_err)
@@ -82,6 +85,3 @@ def main():
     X_test = X_test.reshape(-1, 8*8)
     # Reduce dimension to 2D using PCA and plot the results
     Plot().plot_in_2d(X_test, y_pred, title="Convolutional Neural Network", accuracy=accuracy, legend_labels=range(10))
-
-if __name__ == "__main__":
-    main()

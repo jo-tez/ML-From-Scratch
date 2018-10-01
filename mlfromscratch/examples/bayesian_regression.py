@@ -1,5 +1,5 @@
 import numpy as np
-import pandas as pd
+#import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import helper functions
@@ -7,13 +7,14 @@ from mlfromscratch.utils.data_operation import mean_squared_error
 from mlfromscratch.utils.data_manipulation import train_test_split, polynomial_features
 from mlfromscratch.supervised_learning import BayesianRegression
 
-def main():
+if __name__ == "__main__":
 
     # Load temperature data
-    data = pd.read_csv('mlfromscratch/data/TempLinkoping2016.txt', sep="\t")
+    DF = '../data/TempLinkoping2016.txt'
+    data = np.genfromtxt(DF, delimiter='\t', names=True)
 
-    time = np.atleast_2d(data["time"].values).T
-    temp = np.atleast_2d(data["temp"].values).T
+    time = np.atleast_2d(data['time']).T
+    temp = np.atleast_2d(data['temp']).T
 
     X = time # fraction of the year [0, 1]
     y = temp
@@ -56,7 +57,7 @@ def main():
     print ("Mean Squared Error:", mse)
 
     # Color map
-    cmap = plt.get_cmap('viridis')
+    cmap = plt.get_cmap()
 
     # Plot the results
     m1 = plt.scatter(366 * X_train, y_train, color=cmap(0.9), s=10)
@@ -75,5 +76,4 @@ def main():
 
     plt.show()
 
-if __name__ == "__main__":
-    main()
+

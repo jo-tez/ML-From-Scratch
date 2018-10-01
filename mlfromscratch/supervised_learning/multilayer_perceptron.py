@@ -1,8 +1,8 @@
 from __future__ import print_function, division
 import numpy as np
 import math
-from sklearn import datasets
-
+#from sklearn import datasets
+from mlxtend.data import mnist_data
 from mlfromscratch.utils import train_test_split, to_categorical, normalize, accuracy_score, Plot
 from mlfromscratch.deep_learning.activation_functions import Sigmoid, Softmax
 from mlfromscratch.deep_learning.loss_functions import CrossEntropy
@@ -90,9 +90,11 @@ class MultilayerPerceptron():
 
 
 def main():
-    data = datasets.load_digits()
-    X = normalize(data.data)
-    y = data.target
+#    data = datasets.load_digits()
+#    X = normalize(data.data)
+#    y = data.target
+    X, y = mnist_data()
+    X = normalize(X)
 
     # Convert the nominal y values to binary
     y = to_categorical(y)
