@@ -1,6 +1,6 @@
 # Machine Learning From Scratch
 
-**Note**: the `pythonista` branch contains a number of changes to make this repository usable in the Pythonista 3 iOS app.
+**Note**: the `pythonista` branch contains a number of changes to make this repository usable in the Pythonista 3 iOS app. Pythonista app does not allow installation of `Pandas` or `scikit-learn`, so much of the code changes replaces `DataFrames` with `Numpy` data arrays. 
 
 ---- 
 
